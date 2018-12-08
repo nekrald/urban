@@ -1,0 +1,35 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Texture Choice</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <h1 class="mt-2">Texture Choice</h1>
+          <hr class="mt-0 mb-4">
+
+          <form action="selection" method="post"> {% csrf_token %}
+
+          <input type="checkbox" name="textures" value="1"> Texture 1. <br>
+          <input type="checkbox" name="textures" value="2"> Texture 2. <br>
+          <input type="checkbox" name="textures" value="3"> Texture 3. <br>
+          <input type="checkbox" name="textures" value="4"> Texture 4. <br>
+          <input type="checkbox" name="textures" value="5"> Texture 5. <br>
+          <input type="checkbox" name="textures" value="6"> Texture 6. <br>
+          <input type="checkbox" name="textures" value="7"> Texture 7. <br>
+          <input type="checkbox" name="textures" value="8"> Texture 8. <br>
+          <input type="checkbox" name="textures" value="9"> Texture 9. <br>
+
+          <button type="submit">Submit</button><br>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

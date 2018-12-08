@@ -1,6 +1,10 @@
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
-	path('', views.index, name='index'),
+	path('parameters', views.parameters, name='parameters'),
+	path('textures', views.textures, name='textures'),
+        path('selection', views.selection, name='selection'),        
 ]
+

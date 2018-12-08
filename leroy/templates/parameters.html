@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" 
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Basic Choice</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <hr class="mt-0 mb-4">
+              <form action="textures" method="post"> {% csrf_token %}
+                  <h1 class="mt-2"> Choice of Material </h1>
+                    <div class="input-group-vertical">
+                            <input type="checkbox" name="materials" value="vinyl"> Винил <br>
+                            <input type="checkbox" name="materials" value="paper" checked> Бумага <br>
+                            <input type="checkbox" name="materials" value="flyzelin" checked> Флизелин <br>
+                    </div>
+                  <h1 class="mt-2"> Maximal and Minimal Price </h1>
+                    <div class="input-group mb-3">
+                            <input type="text" name="min_price" value="0"> <br>
+                            <input type="text" name="max_price" value="10000"> <br>
+                    </div>
+                  <h1 class="mt-2"> Allowed Colors </h1>
+                    <div class="input-group-vertical">
+                        <input type="checkbox" name="colors" value="bezh"> Бежевый <br>
+                        <input type="checkbox" name="colors" value="white"> Белый <br>
+                        <input type="checkbox" name="colors" value="light-blue"> Голубой <br>
+                        <input type="checkbox" name="colors" value="yellow"> Жёлтый <br>
+                        <input type="checkbox" name="colors" value="green"> Зеленый<br>
+                        <input type="checkbox" name="colors" value="brown"> Коричневый<br>
+                        <input type="checkbox" name="colors" value="red"> Красный <br>
+                        <input type="checkbox" name="colors" value="multi"> Мультиколор <br>
+                        <input type="checkbox" name="colors" value="orange"> Оранжевый <br>
+                        <input type="checkbox" name="colors" value="rose"> Розовый <br>
+                        <input type="checkbox" name="colors" value="gray"> Серый <br>
+                        <input type="checkbox" name="colors" value="dark-blue"> Синий <br>
+                        <input type="checkbox" name="colors" value="violet"> Фиолетовый <br>
+                        <input type="checkbox" name="colors" value="black"> Чёрный <br>
+                    </div>
+                   <br> <button type="submit" class="btn btn-outline-secondary"> Submit </button><br>
+              </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
