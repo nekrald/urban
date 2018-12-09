@@ -58,6 +58,10 @@ class WallpaperMaster(object):
 
 
     def get_ranked_pictures(self, color_id, name, color_weight=5.0):
+        """
+        color_id is an index of the color from the list: constants.COLORS
+        name is a str unique wallpaper id
+        """
         index = self.indices_by_name[name]
         total_distances = np.zeros(self.names.shape[0])
         total_distances += np.log(self.distances[index])
