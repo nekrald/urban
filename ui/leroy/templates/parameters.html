@@ -7,7 +7,7 @@
     <link rel="stylesheet" 
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title> Выбор параметра </title>
+    <title> Выбор параметров </title>
   </head>
   <body>
     {% load static %}        
@@ -19,8 +19,18 @@
                   <h1 class="mt-2"> Материал основы: </h1>
                     <div class="input-group-vertical">
                             <input type="checkbox" name="materials" value="vinyl"> Винил <br>
+                            <input type="checkbox" name="materials" value="flyzelin"> Флизелин <br>
                             <input type="checkbox" name="materials" value="paper" checked> Бумага <br>
                     </div>
+                  <h1 class="mt-2"> Тип комнаты: </h1>
+                    <div class="input-group-vertical">
+                            <input type="radio" name="room" value="kitchen"> Кухня <br>
+                            <input type="radio" name="room" value="sleep" checked> Спальня <br>
+                            <input type="radio" name="room" value="entrance" checked> Прихожая <br>
+                            <input type="radio" name="room" value="work" checked> Рабочий офис <br>
+                            <input type="radio" name="room" value="guest" checked> Гостевой зал <br>
+                    </div>
+
                   <h1 class="mt-2"> Диапазон цен: </h1>
                     <div class="input-group mb-3">
                             <input type="text" name="min_price" value="0"> <br>
