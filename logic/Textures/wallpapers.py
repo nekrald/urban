@@ -8,17 +8,20 @@ import scipy.misc
 from sklearn.cluster import  FeatureAgglomeration, SpectralClustering
 
 import constants
+import sys
+import os
 
+FILE_DIR_WALLPAPERS = os.path.dirname(os.path.realpath(__file__))
 
 class WallpaperMaster(object):
     """
     some init magic here
     """
     def __init__(self,
-                 path_to_csv='wallpapers.csv',
-                 path_to_dir='wallpapers/',
-                 path_to_pkl='names_distances_wallpapers_gray.pkl',
-                 path_to_color_pkl='wallpapers_color_distances.pkl'):
+                 path_to_csv=os.path.join(FILE_DIR_WALLPAPERS, 'wallpapers.csv'),
+                 path_to_dir=os.path.join(FILE_DIR_WALLPAPERS, 'wallpapers/'),
+                 path_to_pkl=os.path.join(FILE_DIR_WALLPAPERS, 'names_distances_wallpapers_gray.pkl'),
+                 path_to_color_pkl=os.path.join(FILE_DIR_WALLPAPERS, 'wallpapers_color_distances.pkl')):
         def _compute_clusters(distances):
             np.random.seed(0)
             n_clusters, power = constants.N_CLUSTERS, constants.POWER

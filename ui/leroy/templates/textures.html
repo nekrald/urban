@@ -8,24 +8,30 @@
     <title>Texture Choice</title>
   </head>
   <body>
+    {% load static %}        
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-8">
           <h1 class="mt-2">Texture Choice</h1>
           <hr class="mt-0 mb-4">
-
           <form action="selection" method="post"> {% csrf_token %}
-
-              <input type="checkbox" name="textures" value="1"> Texture 1. <br>
-              <input type="checkbox" name="textures" value="2"> Texture 2. <br>
-              <input type="checkbox" name="textures" value="3"> Texture 3. <br>
-              <input type="checkbox" name="textures" value="4"> Texture 4. <br>
-              <input type="checkbox" name="textures" value="5"> Texture 5. <br>
-              <input type="checkbox" name="textures" value="6"> Texture 6. <br>
-              <input type="checkbox" name="textures" value="7"> Texture 7. <br>
-              <input type="checkbox" name="textures" value="8"> Texture 8. <br>
-              <input type="checkbox" name="textures" value="9"> Texture 9. <br>
-
+          {% if texture_list %}
+          <table>
+              {% for item in texture_list %}
+              <tr>
+              <td>
+                  <input type="checkbox" name="textures" 
+                  value="{{ item.idx }}" class="class_checkbox"> 
+              </td>
+              <td>
+                  <img src="{% static item.img_path %}" 
+                  alt="Image" class="img-thumbnail" width=80 height=80> 
+              </td>
+                <br>
+              </tr>
+              {% endfor %}
+          </table>
+          {% endif %}
           <button type="submit">Submit</button><br>
         </div>
       </div>

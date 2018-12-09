@@ -9,6 +9,8 @@
     <title>Wallpaper Proposal</title>
   </head>
   <body>
+
+    {% load static %}        
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-8">
@@ -18,10 +20,11 @@
                 <table class="table table-bordered">
                     {% for item in  product_list  %}
                             <tr>
-                                <td> {{ item.price }} </td>
                                 <td> {{ item.color }} </td>
-                                <td> <img src="{{ item.img_path }}" alt="Image" > </td>
-                                <td> {{ item.img_path }} </td>
+                                <td> 
+                                    <img src="{% static item.img_path %}" 
+                                    alt="Image" class="img-thumbnail" width=80 height=80> 
+                                </td>
                                 <td> {{ item.material }} </td>
                             </tr>
                     {% endfor %}

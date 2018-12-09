@@ -10,6 +10,8 @@
     <title>Basic Choice</title>
   </head>
   <body>
+    {% load static %}        
+    <img src="{% static "wallpapers/90000885.png" %}" alt="Texture" >
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-8">
@@ -19,7 +21,6 @@
                     <div class="input-group-vertical">
                             <input type="checkbox" name="materials" value="vinyl"> Винил <br>
                             <input type="checkbox" name="materials" value="paper" checked> Бумага <br>
-                            <input type="checkbox" name="materials" value="flyzelin" checked> Флизелин <br>
                     </div>
                   <h1 class="mt-2"> Maximal and Minimal Price </h1>
                     <div class="input-group mb-3">
