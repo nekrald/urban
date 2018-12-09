@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Wallpaper Proposal</title>
+    <title>Выбор Товара</title>
   </head>
   <body>
 
@@ -14,24 +14,31 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-8">
-          <h1 class="mt-2">Wallpaper Proposal</h1>
+          <h1 class="mt-2"> Найден товар:</h1>
           <hr class="mt-0 mb-4">
           {% if product_list %}
                 <table class="table table-bordered">
                     {% for item in  product_list  %}
                             <tr>
-                                <td> {{ item.color }} </td>
+                                <td>
+                                    {{ item.name }}
+                                </td>
                                 <td> 
                                     <img src="{% static item.img_path %}" 
-                                    alt="Image" class="img-thumbnail" width=80 height=80> 
+                                    alt="Image" class="img-thumbnail" width=200 height=200> 
                                 </td>
-                                <td> {{ item.material }} </td>
+                                <td>
+                                    {{ item.color }}
+                                </td>
+                                <td>
+                                    {{ item.goal }}
+                                </td>
                             </tr>
                     {% endfor %}
                 </table>
           {% endif %}
 
-        <li><a href="parameters"> To Beginning</a></li>
+        <li><a href="parameters"> На главную.</a></li>
         </div>
       </div>
     </div>

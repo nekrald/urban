@@ -5,30 +5,47 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Texture Choice</title>
+    <title> Выбор Текстуры </title>
   </head>
   <body>
     {% load static %}        
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-8">
-          <h1 class="mt-2">Texture Choice</h1>
-          <hr class="mt-0 mb-4">
+          <h1 class="mt-2"> Выбор Текстуры </h1>
           <form action="selection" method="post"> {% csrf_token %}
           {% if texture_list %}
-          <table>
+          <table class="table table-bordered table-hover table-responsive table-curved">
               {% for item in texture_list %}
+              <div class="wrapper">
               <tr>
+
               <td>
-                  <input type="checkbox" name="textures" 
-                  value="{{ item.idx }}" class="class_checkbox"> 
+                  <input type="radio" name="textures" 
+                  value="{{ item.first.idx }}" class="class_checkbox"> 
               </td>
               <td>
-                  <img src="{% static item.img_path %}" 
-                  alt="Image" class="img-thumbnail" width=80 height=80> 
+                  <img src="{% static item.first.img_path %}" 
+                  alt="Image" class="img-thumbnail" width=240 height=240> 
               </td>
-                <br>
+              <td>
+                {{ item.second.idx }}
+              </td>
+
+              <td>
+                  <input type="radio" name="textures" 
+                  value="{{ item.second.idx }}" class="class_checkbox"> 
+              </td>
+              <td>
+                  <img src="{% static item.second.img_path %}" 
+                  alt="Image" class="img-thumbnail" width=240 height=240> 
+              </td>
+              <td>
+                {{ item.second.idx }}
+              </td>
+
               </tr>
+              </div>
               {% endfor %}
           </table>
           {% endif %}

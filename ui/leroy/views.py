@@ -5,11 +5,12 @@ from django.template import loader
 import logging
 import sys
 import os
+import pandas as pd
 
 FILE_DIR = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(FILE_DIR, "../../logic/Textures"))
 
-from .models import ProposedItem, TextureItem
+from .models import ProposedItem, TextureItem, ItemPair
 import wallpapers
 import constants
 
@@ -29,13 +30,13 @@ def text2id_color(text):
             "bezh" :  0,
             "blue" :  1,
             "gray" :  2,
-            "violet" :  3,
-            "green" : 4,
+            "rose" :  3,
+            "green" :  4,
             "brown" : 5,
             "red" : 6,
             "white" : 7,
             "black" : 8,
-            "rose" : 9,
+            "violet" : 9,
             "yellow" : 10,
         }
         if text in converter:
@@ -61,8 +62,14 @@ def textures(request):
         names, paths = master.get_pictures_by_color_id(color_ids[0])
 
         texture_list = []
-        for idx, link in zip(names, paths):
-            texture_list.append(TextureItem(transform_path(link), idx))
+        idx = 0
+        while idx < len(names):
+                link = paths[idx]
+                lhs = TextureItem(transform_path(paths[idx]), names[idx])
+                rhs = TextureItem(transform_path(paths[idx+1]), names[idx+1])
+                pair = ItemPair(lhs, rhs)
+                texture_list.append(pair)
+                idx += 2
 
         session = request.session
         session['materials'] = material_names
@@ -80,20 +87,26 @@ def textures(request):
 
 def selection(request):        
         texture_ids = request.POST.getlist('textures')
-
         material_names = request.session['materials']
         color_names = request.session['colors']
-
         color_ids = [text2id_color(name) for name in color_names]
-
         master = WallpaperMaster()
         names, links = master.get_ranked_pictures(color_ids[0], texture_ids[0])
-
-        template = loader.get_template('selection.html')
+        data_texture = pd.read_excel("data/data_part_1.xls")
+        data_texture_cols = data_texture.columns
+        data_texture_filter = data_texture[[data_texture_cols[0], data_texture_cols[1], data_texture_cols[17]]]
+        data_texture_filter.columns = ["name", "id", "color"]
         product_list = []
-        for idx, path in zip(names, links):
-            product_list.append(ProposedItem(color_names[0], transform_path(path), material_names[0]))
-
+        for index, path in zip(names, links):
+                goal = int(index)
+                name = "Unknown"
+                color = "Unknown"
+                for idx, item in enumerate(data_texture_filter["id"].values):
+                        if goal == item:
+                                name = data_texture_filter["name"][idx]
+                                color = data_texture_filter["color"][idx]
+                product_list.append(ProposedItem(color, transform_path(path), goal, name))
+        template = loader.get_template('selection.html')
         context = {
             "product_list" : product_list
         }
